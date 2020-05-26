@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>${title}</title>
+  </head>
+  <body>
+    <p>List of values:</p>
+    <ul>
+      $for x in xs {{
+        $if x.enable {{
+          <li><a href="${x.url}">${x.value}</a></li>
+        }}
+      }}
+    </ul>
+  </body>
+</html>
