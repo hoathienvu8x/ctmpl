@@ -1,12 +1,10 @@
-======
-C++ Template Engine for HTML/CSS/JavaScript
-======
+# C++ Template Engine for HTML/CSS/JavaScript
 
 > This project clone from [melpon/ginger](https://github.com/melpon/ginger) and modified, i'll develop on base source.
 
 Template is here
 
-.. sourcecode:: html
+```html
 
   <html>
     <head>
@@ -23,10 +21,11 @@ Template is here
       </ul>
     </body>
   </html>
+```
 
 Source code is here
 
-.. sourcecode:: cpp
+```cpp
 
   #include <iostream>
   #include <vector>
@@ -79,10 +78,11 @@ Source code is here
           std::cerr << error.long_error() << std::endl;
       }
   }
+```
 
 Result
 
-.. sourcecode:: html
+```html
 
   <html>
     <head>
@@ -105,20 +105,20 @@ Result
       </ul>
     </body>
   </html>
+```
 
-Requirements
-============
+### Requirements
 
 Input
 -----
 
 - below expression should be valid
 
-  .. sourcecode:: cpp
+```cpp
 
     auto first = std::begin(input);
     auto last = std::end(input);
-
+```
 - first, last should be ForwardIterator.
 
 
@@ -127,11 +127,12 @@ Dictionary
 
 - Below expressions should be valid
 
-  .. sourcecode:: cpp
+```cpp
 
     std::string var;
     auto it = dic.find(var);
     it != dic.end();
+```
 
 - Type of it->second should be object.
 
@@ -140,13 +141,13 @@ Output
 
 - Below expression should be valid
 
-  .. sourcecode:: cpp
+```cpp
 
     // Output output; // default constructible is not required.
     // For any ForwardIterator first, last
     output.put(first, last);
     output.flush();
-
+```
 Reference
 =========
 
@@ -155,7 +156,7 @@ object
 
 Class ``object`` can construct from any value.
 
-.. sourcecode:: cpp
+```cpp
 
   class object {
   public:
@@ -168,11 +169,12 @@ Class ``object`` can construct from any value.
       template<class T> object(T v);
       template<class T> void operator=(T v);
   };
+```
 
 parse
 -----
 
-.. sourcecode:: cpp
+```cpp
 
   template<class Input, class Dictionary>
   void parse(Input&& input, Dictionary&& t);
@@ -183,11 +185,12 @@ parse
   void parse(const char* input, Dictionary&& t);
   template<class Dictionary, class Output>
   void parse(const char* input, Dictionary&& t, Output&& out);
+```
 
 Template Syntax Specification
 =============================
 
-::
+```
 
   <root> = <block>
   <block> = (<char> | <$comment> | <$for> | <$if> | <$variable> | $$ | ${{ | $}}) <block> | <eof>
@@ -201,6 +204,7 @@ Template Syntax Specification
   <var-name> = <var-char>+
   <var-char> = any character without <whitespace>, '.', '{' or '}'
   <whitespace> = c <= 32 where c is character
+```
 
 MIT License
 
